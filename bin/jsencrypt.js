@@ -3184,12 +3184,6 @@ function removeDigestHeader(str) {
 // public
 // RSAKey.prototype.encrypt_b64 = RSAEncryptB64;
 
-/*!
-Copyright (c) 2011, Yahoo! Inc. All rights reserved.
-Code licensed under the BSD License:
-http://developer.yahoo.com/yui/license.html
-version: 2.9.0
-*/
 var YAHOO = {};
 YAHOO.lang = {
     /**
