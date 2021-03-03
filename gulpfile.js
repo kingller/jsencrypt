@@ -27,11 +27,11 @@ var libs_for_test = [
     "node_modules/mocha/mocha.js"
 ];
 
-gulp.task('lint', function () {
-  return gulp.src(lintFiles)
-      .pipe(tslint({}))
-      .pipe(tslint.report({ summarizeFailureOutput: true }));
-});
+// gulp.task('lint', function () {
+//   return gulp.src(lintFiles)
+//       .pipe(tslint({}))
+//       .pipe(tslint.report({ summarizeFailureOutput: true }));
+// });
 
 gulp.task('license', function() {
   return gulp.src(licenses)
@@ -39,7 +39,7 @@ gulp.task('license', function() {
       return 'File: ' + file.path.replace(__dirname, '') + "\n" + contents;
     }))
     .pipe(concat('LICENSE.txt'))
-    .pipe(gulp.dest(''));
+    .pipe(gulp.dest('./'));
 });
 
 /**
@@ -74,7 +74,7 @@ gulp.task('tsc', function() {
 /**
  * build library with rollup
  */
-gulp.task('assemble', ['tsc'], function () {
+gulp.task('assemble', gulp.parallel('tsc'), function () {
     var config = require('./rollup.config');
 
     return rollup.rollup(config).then(function (bundle) {
@@ -100,5 +100,6 @@ gulp.task('compress', function (cb) {
     .pipe(gulp.dest('bin'));
 });
 
-gulp.task('build', ['prepare_test', 'lint', 'assemble', 'license', 'compress']);
-gulp.task('default', ['build']);
+// gulp.task('build', gulp.parallel('prepare_test', 'lint', 'assemble', 'license', 'compress'));
+gulp.task('build', gulp.parallel('prepare_test', 'assemble', 'license', 'compress'));
+gulp.task('default', gulp.parallel('build'));
