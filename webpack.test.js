@@ -6,14 +6,14 @@ import pkg from "webpack";
 const { ProvidePlugin, DefinePlugin } = pkg;
 
 export default {
-    entry: path.join(path.resolve(__dirname, "lib"), "index.js"),
+    entry: "./test/test.rsa.js",
     output: {
         library: "JSEncrypt",
         libraryTarget: "umd",
         libraryExport: "default",
         globalObject: "window",
-        path: path.resolve(__dirname, "bin"),
-        filename: "jsencrypt.js",
+        path: path.resolve(__dirname, "test"),
+        filename: "test.rsa.bundle.js",
     },
     mode: "development",
     performance: { hints: false },
