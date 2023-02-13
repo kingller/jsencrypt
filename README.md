@@ -140,7 +140,7 @@ else {
 ```
 
 - Note that you have to provide the hash function. In this example we use one from the [CryptoJS](https://github.com/brix/crypto-js) library, but you can use whichever you want.
-- Also, unless you use a custom hash function, you should provide the hash type to the `sign` method. Possible values are: `md2`, `md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`, `ripemd160`.
+- Also, unless you use a custom hash function, you should provide the hash type to the `sign` method. Possible values are: `sha224`, `sha256`, `sha384`, `sha512`, `ripemd160`.
 
 Other Information
 ========================
