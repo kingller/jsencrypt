@@ -20,6 +20,10 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 File: /lib/jsrsasign/LICENSE.txt
+
+
+CONTAINS CODE FROM YUI LIBRARY SEE LICENSE @ http://yuilibrary.com/license/
+
 The 'jsrsasign'(RSA-Sign JavaScript Library) License
 
 Copyright (c) 2010-2013 Kenji Urushima

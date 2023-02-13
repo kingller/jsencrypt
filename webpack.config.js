@@ -1,39 +1,44 @@
-const path = require('path');
-var modules_path = path.resolve(__dirname, './bin');
+import path from "path";
 
+import * as url from "url";
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+import pkg from "webpack";
+const { ProvidePlugin, DefinePlugin } = pkg;
 
-
-module.exports = {
-  target: 'web',
-  // devtool: 'inline-source-map',
-  entry: './src/JSEncrypt.ts',
-  output: {
-    filename: 'jsencrypt.js',
-    chunkFilename: 'modules/[chunkhash].[name].chunk.js',
-    path: modules_path,
-    strictModuleExceptionHandling: true
-  },
-
-  resolve: {
-    // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['.ts', '.tsx', '.js']
-  },
-  module: {
-    rules: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: false,
-              configFile: require.resolve("./tsconfig.json")
-            }
-          },
-        ]
-      },
-    ]
-  },
-
+export default {
+    entry: path.join(path.resolve(__dirname, "lib"), "index.js"),
+    output: {
+        library: "JSEncrypt",
+        libraryTarget: "umd",
+        libraryExport: "default",
+        globalObject: "window",
+        path: path.resolve(__dirname, "bin"),
+        filename: "jsencrypt.js",
+    },
+    mode: "development",
+    performance: { hints: false },
+    module: {
+        rules: [
+            {
+                test: /\.m?js/,
+                type: "javascript/auto",
+            },
+            {
+                test: /\.m?js/,
+                resolve: {
+                    fullySpecified: false,
+                },
+            },
+        ],
+    },
+    plugins: [
+        new ProvidePlugin({
+            process: "process/browser",
+        }),
+        new DefinePlugin({
+            "process.env.npm_package_version": JSON.stringify(
+                process.env.npm_package_version,
+            ),
+        }),
+    ],
 };
