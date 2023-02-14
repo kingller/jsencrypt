@@ -1,7 +1,6 @@
 {
     "name": "pandora-jsencrypt",
-    "type": "module",
-    "version": "3.3.1",
+    "version": "3.3.2",
     "description": "A Javascript library to perform OpenSSL RSA Encryption, Decryption, and Key Generation.",
     "main": "bin/jsencrypt.js",
     "module": "lib/index.js",
