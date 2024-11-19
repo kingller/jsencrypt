@@ -1,3 +1,18 @@
+This fork was modified to be able to use oaep padding and public keys with format
+
+```
+-----BEGIN RSA PUBLIC KEY-----
+xxx...
+-----END RSA PUBLIC KEY-----
+```
+
+To use oaep padding pass true as a second parameter in the encrypt function, example:
+
+```
+var encrypted = encrypt.encrypt($('#input').val(), true);
+```
+
+
 Website
 ======================
 http://travistidwell.com/jsencrypt
