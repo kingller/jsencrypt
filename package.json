@@ -63,5 +63,8 @@
     "bugs": {
         "url": "http://github.com/travist/jsencrypt/issues"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    }
 }
